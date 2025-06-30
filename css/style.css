@@ -20,7 +20,7 @@ section {
 
 .snap-section {
   scroll-snap-align: start;
-  min-height: 72vh;
+  min-height: 74vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,16 +31,24 @@ section {
 nav {
     background: #8B0000;
     padding: 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.54);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
 }
+
+
 .navbar {
     max-width: 1100px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 16px 20px;
+    position: relative;
 }
+
 .navbar-logo {
     display: flex;
     align-items: center;
@@ -48,13 +56,12 @@ nav {
     font-size: 1.4rem;
     font-weight: bold;
     letter-spacing: 1px;
-    padding: 18px 0;
     text-decoration: none;
-    gap: 10px; /* Jarak antara gambar dan teks */
+    gap: 10px;
 }
 
 .logo-img {
-    height: 40px; /* Sesuaikan tinggi logo */
+    height: 40px;
     width: auto;
     object-fit: contain;
 }
@@ -63,57 +70,74 @@ nav {
     display: flex;
     gap: 30px;
 }
+
 .navbar-menu a {
     color: #fff;
     text-decoration: none;
     font-size: 1rem;
-    padding: 18px 0;
+    padding: 16px 0;
     transition: color 0.2s;
 }
+
 .navbar-menu a:hover {
     color: #ffd6d6;
 }
 
-/* Tambahan opsional jika ingin atur dropdown secara custom */
-.custom-dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 999;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  padding: 10px 0;
-  min-width: 220px;
+/* === Toggle Button === */
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
 }
 
-.custom-dropdown-menu.show {
-  display: block;
-}
-
-.custom-dropdown-menu .dropdown-item {
-  padding: 8px 16px;
-  color: #333;
-  text-decoration: none;
-  display: block;
-}
-
-.custom-dropdown-menu .dropdown-item:hover {
-  background-color: #f8f9fa;
-  color: #8B0000;
-}
-
-
-
-
-@media (max-width: 600px) {
-    .logo-img {
-        height: 30px;
+/* === Responsive (HP) === */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 32px 20px;
+        justify-content: center;
+        position: relative;
     }
-    .navbar-logo span {
-        font-size: 1.2rem;
+
+    .navbar-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .navbar-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        background: #8B0000;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 10px 20px;
+        z-index: 99;
+    }
+
+    .navbar-menu.show {
+        display: flex;
+    }
+
+    .navbar-menu a {
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-menu a:last-child {
+        border-bottom: none;
     }
 }
 
@@ -218,13 +242,13 @@ nav {
 }
 
 #profile {
-    padding: 80px 0 180px; /* Atas & Bawah 60px */
-    background-color: #fafafa; /* opsional: latar belakang lembut */
+    padding: 80px 0 180px;
+    background-color: #fafafa;
 }
 
 .section-title {
     margin-top: 0;
-    margin-bottom: 80px; /* sebelumnya 20px */
+    margin-bottom: 80px;
     text-align: center;
     font-size: 1.7rem;
     color: #8B0000;
@@ -232,7 +256,7 @@ nav {
 }
 
 .keunggulan-wrapper {
-    padding-top: 40px; /* tambahan sedikit ruang atas jika dibutuhkan */
+    padding-top: 40px;
 }
 
 /* Responsive Layout */
@@ -258,34 +282,6 @@ nav {
     }
 }
 
-
-
-
-
-
-
-
-
-/* === List Keunggulan ===
-ul.keunggulan-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
-ul.keunggulan-list li {
-    background: #ffecec;
-    border-left: 5px solid #8B0000;
-    padding: 15px 20px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    color: #333;
-    line-height: 1.6;
-    transition: transform 0.2s ease-in-out, background 0.2s;
-}
-ul.keunggulan-list li:hover {
-    transform: translateX(6px);
-    background: #ffdddd;
-} */
 
 /* === CTA Button === */
 .cta-btn {

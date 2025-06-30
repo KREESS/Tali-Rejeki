@@ -15,7 +15,7 @@
         integrity="sha384-0evHe/X+R7YkSU7A9Kw7P4OPDHyw+3Ulwp8dw55zDZ81D9g3PC5lMZ9jdb4BQ+fX" crossorigin="anonymous">
 
     <!-- ✅ File CSS Custom -->
-    <link rel="stylesheet" href="/css/all.min.css"> <!-- opsional jika ada isi -->
+    <link rel="stylesheet" href="/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 
     <!-- ✅ Animasi JS -->
@@ -28,8 +28,18 @@
 
     <!-- ✅ Favicon (Logo Tab Browser) -->
     <link rel="icon" href="assets/img/LOGOS_PT.png" type="image/png">
-</head>
 
+    <!-- ✅ Font Awesome 6 -->
+<!-- Font Awesome 6 -->
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-C2n+EK3KBP3DMBuRZVnX0f5V63rEzP5g+Hqf2zBQ9U2BzStCH3t2e6RvnEZBP2QOqfF3fO0U7Hqg8QsU+nRAdg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+    <!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+</head>
 <body>
     <nav>
         <div class="navbar">
@@ -37,7 +47,10 @@
                 <img src="assets/img/LOGOS_PT.png" alt="Logo PT" class="logo-img">
                 <span>PT Tali Rejeki</span>
             </a>
-            <div class="navbar-menu">
+            <button class="navbar-toggle" id="navbar-toggle">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="navbar-menu" id="navbar-menu">
                 <a href="index.html">Beranda</a>
                 <a href="produk.html">Produk</a>
                 <a href="katalog_produk.html">Katalog Produk</a>
@@ -46,6 +59,7 @@
             </div>
         </div>
     </nav>
+
     <header id="beranda" class="snap-section">
         <div class="slider-container">
             <div class="slider-slide slider-active" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80');"></div>
@@ -222,6 +236,35 @@
         &copy; <span id="current-year"></span> PT Tali Rejeki. All rights reserved.
     </div>
 </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.getElementById("navbar-toggle");
+        const menu = document.getElementById("navbar-menu");
+
+        toggle.addEventListener("click", function (e) {
+            e.stopPropagation();
+            menu.classList.toggle("show");
+        });
+
+        // Tutup menu jika klik di luar
+        document.addEventListener("click", function (e) {
+            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                menu.classList.remove("show");
+            }
+        });
+
+        // Tutup menu saat klik link di dalam menu (mobile)
+        const links = menu.querySelectorAll("a");
+        links.forEach(link => {
+            link.addEventListener("click", () => {
+                menu.classList.remove("show");
+            });
+        });
+    });
+</script>
+
+
 
 </body>
 </html>
